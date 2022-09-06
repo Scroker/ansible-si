@@ -20,3 +20,5 @@ config_files:
       dest: '{{ carbon_home }}/conf/server/deployment.yaml' }
   - { src: 'carbon-home/bin/server.sh.j2',
       dest: '{{ carbon_home }}/bin/server.sh' }
+  - { src: 'carbon-home/bin/jartobundle.sh.j2',
+      dest: '{{ carbon_home }}/bin/jartobundle.sh' }

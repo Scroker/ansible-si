@@ -50,16 +50,21 @@
         mode: u=rw,g=r,o=r
 
 # Enable use of the MySQL JDBC driver by uncommenting the following
-    - name: Copy JDBC Driver
-      copy:
-       src: "{{ product_package_location }}/lib/{{ jdbc_driver }}"
-       dest: "{{ carbon_home }}/lib"
+#    - name: Copy JDBC OSGi Driver
+#      copy:
+#        src: "{{ product_package_location }}/osgi_lib/{{ jdbc_driver }}"
+#        dest: "{{ carbon_home }}/lib"
 
     - name: Copy configuration templates
       template:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
       loop: "{{ config_files }}"
+
+# Enable use of the MySQL JDBC driver by uncommenting the following
+    - name: Create JDBC OSGi Driver
+      ansible.builtin.shell:
+        cmd: "/bin/sh {{ carbon_home }}/bin/jartobundle.sh {{ product_package_location }}/lib/ {{ carbon_home }}/lib"
 
     - name: Change the owner of WSO2 directory
       file:
