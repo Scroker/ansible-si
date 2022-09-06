@@ -1,6 +1,20 @@
 [server]
 server_1 ansible_host=localhost ansible_user=gdramis
 
+[monitor]
+monitor_1 ansible_host=localhost ansible_user=gdramis
+
+[editor]
+editor_1 ansible_host=localhost ansible_user=gdramis
+
 [si]
 [si:children]
 server
+
+[ad]
+[ad:children]
+monitor
+
+[tooling]
+[tooling:children]
+editor

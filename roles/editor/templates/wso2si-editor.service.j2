@@ -1,11 +1,11 @@
 [Unit]
-Description=WSO2 Streaming Integrator - Worker
+Description=WSO2 Streaming Integrator - Editor
 After=network.target
 
 [Service]
-ExecStart={{ carbon_home }}/bin/server.sh start
-ExecStop={{ carbon_home }}/bin/server.sh stop
-ExecRestart={{ carbon_home }}/bin/server.sh restart
+ExecStart={{ carbon_home }}/bin/tooling.sh start
+ExecStop={{ carbon_home }}/bin/tooling.sh stop
+ExecRestart={{ carbon_home }}/bin/tooling.sh restart
 PIDFile={{ carbon_home }}/wso2/server/runtime.pid
 User={{ wso2_user }}
 Group={{ wso2_group }}

@@ -14,28 +14,4 @@
 #  limitations under the License.
 #----------------------------------------------------------------------------
 
----
-# This playbook deploys the whole application stack in this site.
-
-- name: Apply common configuration to all nodes
-  hosts: all
-  roles: 
-    - common
-
-- name: Apply server configuration to server nodes
-  hosts:
-    - server_1
-  roles:
-    - server
-
-- name: Apply monitor configuration to server nodes
-  hosts:
-    - monitor_1
-  roles:
-    - monitor
-
-- name: Apply monitor configuration to server nodes
-  hosts:
-    - editor_1
-  roles:
-    - editor
+# Add configs for the custom files that are needed to be copied/replaced here.
