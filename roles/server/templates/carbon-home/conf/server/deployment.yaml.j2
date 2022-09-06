@@ -329,7 +329,7 @@ wso2.securevault:
   secretRepository:
     type: org.wso2.carbon.secvault.repository.DefaultSecretRepository
     parameters:
-     privateKeyAlias: {{ secure_vault_private_key_alias }}
+      privateKeyAlias: {{ secure_vault_private_key_alias }}
       keystoreLocation: {{ secure_vault_keystore_location }}
       secretPropertiesFile: {{ secure_vault_secret_properties_file }}
   masterKeyReader:
@@ -346,14 +346,13 @@ wso2.datasources:
       definition:
         type: RDBMS
         configuration:
-          connectionTestQuery: "SELECT 1"
-          driverClassName: org.h2.Driver
+          jdbcUrl: '{{ wso2_cluster_db_url }}'
+          username: {{ wso2_cluster_db_username }}
+          password: {{ wso2_cluster_db_password }}
+          driverClassName: {{ wso2_permissions_db_driver_class_name }}
           idleTimeout: 60000
           isAutoCommit: false
-          jdbcUrl: "jdbc:h2:${sys:carbon.home}/wso2/${sys:wso2.runtime}/database/WSO2_CLUSTER_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000;AUTO_SERVER=TRUE"
           maxPoolSize: 10
-          password: wso2carbon
-          username: wso2carbon
           validationTimeout: 30000
 
     - name: WSO2_PERMISSIONS_DB
